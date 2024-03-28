@@ -1,11 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const userController = require('../controllers/UserController');
-const userValidation = require('../requests/UserRequest');
+const userController = require("../controllers/UserController");
+const userValidation = require("../requests/UserRequest.js");
 
-router.post('/login', userController.loginPost, userRequest);
-router.post('/show', )
-router.post('/create', userController.registerPost, userValidation);
-router.patch('/:id/update', userController.update, userValidation.updateUser);
+router.post("/login", userController.loginPost, userValidation.loginValidation);
+router.post("/create", userController.registerPost, userValidation.createUser);
 
 module.exports = router;

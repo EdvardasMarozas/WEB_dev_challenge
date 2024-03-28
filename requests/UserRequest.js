@@ -1,4 +1,4 @@
-import { params, body, validationResult } from 'express-validator'
+const { params, body, validationResult } =  require('express-validator');
 
 
 module.exports = {
@@ -65,5 +65,18 @@ module.exports = {
             .custom((value, { req }) => {
                 return value === req.body.password;
             }).withMessage("Passwords don't match"),
-    ]
+    ],
+    loginValidation: [
+        body("email")
+          .trim()
+          .escape()
+          .notEmpty()
+          .withMessage("Email is not specified!")
+          .isEmail()
+          .withMessage("Invalid email address!"),
+        body("password")
+          .trim()
+          .notEmpty()
+          .withMessage("Password is not specified!"),
+      ],
 }
